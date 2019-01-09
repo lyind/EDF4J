@@ -153,24 +153,24 @@ public class EDFWriter
                 return signalsData;
         }
 
-        private static void putIntoBuffer(ByteBuffer bb, int lengthPerValue, Double[] values, DecimalFormat df)
+        private static void putIntoBuffer(ByteBuffer bb, int lengthPerValue, double[] values, DecimalFormat df)
         {
-                for (Double value : values)
+                for (double value : values)
                 {
                         putIntoBuffer(bb, lengthPerValue, value, df);
                 }
         }
 
-        private static void putIntoBuffer(ByteBuffer bb, int length, Double value, DecimalFormat df)
+        private static void putIntoBuffer(ByteBuffer bb, int length, double value, DecimalFormat df)
         {
                 if (Math.floor(value) == value) {
-                        putIntoBuffer(bb, length, value.intValue());
+                        putIntoBuffer(bb, length, (int) value);
                 } else {
                         putIntoBuffer(bb, length, df.format(value));
                 }
         }
 
-        private static void putIntoBuffer(ByteBuffer bb, int lengthPerValue, Integer[] values)
+        private static void putIntoBuffer(ByteBuffer bb, int lengthPerValue, int[] values)
         {
                 for (Integer value : values)
                 {

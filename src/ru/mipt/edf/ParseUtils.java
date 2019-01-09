@@ -36,17 +36,17 @@ abstract class ParseUtils
                 return result;
         }
 
-        public static Double[] readBulkDoubleFromStream(InputStream is, int size, int length) throws IOException
+        public static double[] readBulkDoubleFromStream(InputStream is, int size, int length) throws IOException
         {
-                Double[] result = new Double[length];
+                double[] result = new double[length];
                 for (int i = 0; i < length; i++)
                         result[i] = Double.parseDouble(readASCIIFromStream(is, size).trim());
                 return result;
         }
 
-        public static Integer[] readBulkIntFromStream(InputStream is, int size, int length) throws IOException
+        public static int[] readBulkIntFromStream(InputStream is, int size, int length) throws IOException
         {
-                Integer[] result = new Integer[length];
+                int[] result = new int[length];
                 for (int i = 0; i < length; i++)
                         result[i] = Integer.parseInt(readASCIIFromStream(is, size).trim());
                 return result;
@@ -69,6 +69,28 @@ abstract class ParseUtils
                 if (i == 0)
                         return Arrays.copyOfRange(array, 1, array.length);
                 T[] result = Arrays.copyOfRange(array, 0, array.length - 1);
+                System.arraycopy(array, i + 1, result, i + 1 - 1, array.length - (i + 1));
+                return result;
+        }
+
+        public static double[] removeElement(double[] array, int i)
+        {
+                if (i < 0)
+                        return array;
+                if (i == 0)
+                        return Arrays.copyOfRange(array, 1, array.length);
+                double[] result = Arrays.copyOfRange(array, 0, array.length - 1);
+                System.arraycopy(array, i + 1, result, i + 1 - 1, array.length - (i + 1));
+                return result;
+        }
+
+        public static int[] removeElement(int[] array, int i)
+        {
+                if (i < 0)
+                        return array;
+                if (i == 0)
+                        return Arrays.copyOfRange(array, 1, array.length);
+                int[] result = Arrays.copyOfRange(array, 0, array.length - 1);
                 System.arraycopy(array, i + 1, result, i + 1 - 1, array.length - (i + 1));
                 return result;
         }

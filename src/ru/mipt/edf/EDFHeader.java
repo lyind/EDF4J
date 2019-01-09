@@ -25,26 +25,26 @@ package ru.mipt.edf;
  */
 public class EDFHeader
 {
-        String idCode = null;
-        String subjectID = null;
-        String recordingID = null;
-        String startDate = null;
-        String startTime = null;
-        int bytesInHeader = 0;
-        String formatVersion = null;
-        int numberOfRecords = 0;
-        double durationOfRecords = 0;
-        int numberOfChannels = 0;
-        String[] channelLabels = null;
-        String[] transducerTypes = null;
-        String[] dimensions = null;
-        Double[] minInUnits = null;
-        Double[] maxInUnits = null;
-        Integer[] digitalMin = null;
-        Integer[] digitalMax = null;
-        String[] prefilterings = null;
-        Integer[] numberOfSamples = null;
-        byte[][] reserveds = null;
+        protected String idCode = null;
+        protected String subjectID = null;
+        protected String recordingID = null;
+        protected String startDate = null;
+        protected String startTime = null;
+        protected int bytesInHeader = 0;
+        protected String formatVersion = null;
+        protected int numberOfRecords = 0;
+        protected double durationOfRecords = 0;
+        protected int numberOfChannels = 0;
+        protected String[] channelLabels = null;
+        protected String[] transducerTypes = null;
+        protected String[] dimensions = null;
+        protected double[] minInUnits = null;
+        protected double[] maxInUnits = null;
+        protected int[] digitalMin = null;
+        protected int[] digitalMax = null;
+        protected String[] prefilterings = null;
+        protected int[] numberOfSamples = null;
+        protected byte[][] reserveds = null;
 
         public String getIdCode()
         {
@@ -111,22 +111,22 @@ public class EDFHeader
                 return dimensions;
         }
 
-        public Double[] getMinInUnits()
+        public double[] getMinInUnits()
         {
                 return minInUnits;
         }
 
-        public Double[] getMaxInUnits()
+        public double[] getMaxInUnits()
         {
                 return maxInUnits;
         }
 
-        public Integer[] getDigitalMin()
+        public int[] getDigitalMin()
         {
                 return digitalMin;
         }
 
-        public Integer[] getDigitalMax()
+        public int[] getDigitalMax()
         {
                 return digitalMax;
         }
@@ -136,7 +136,7 @@ public class EDFHeader
                 return prefilterings;
         }
 
-        public Integer[] getNumberOfSamples()
+        public int[] getNumberOfSamples()
         {
                 return numberOfSamples;
         }
@@ -145,5 +145,4 @@ public class EDFHeader
         {
                 return reserveds;
         }
-
 }

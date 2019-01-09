@@ -39,8 +39,8 @@ public class EDFAnnotationFileHeaderBuilder
         private String startDate;
         private String startTime;
         private double durationOfRecord;
-        private Integer numberOfChannels;
-        private Integer numberOfRecords;
+        private int numberOfChannels;
+        private int numberOfRecords;
 
         private String patientCode = "X";
         private String patientSex = "X";
@@ -55,12 +55,12 @@ public class EDFAnnotationFileHeaderBuilder
         private String[] channelLabels;
         private String[] transducerTypes;
         private String[] dimensions;
-        private Double[] minInUnits;
-        private Double[] maxInUnits;
-        private Integer[] digitalMin;
-        private Integer[] digitalMax;
+        private double[] minInUnits;
+        private double[] maxInUnits;
+        private int[] digitalMin;
+        private int[] digitalMax;
         private String[] prefilterings;
-        private Integer[] numberOfSamples;
+        private int[] numberOfSamples;
         private byte[][] reserveds;
 
         public EDFAnnotationFileHeaderBuilder recordingId(String recordingId)
@@ -164,25 +164,25 @@ public class EDFAnnotationFileHeaderBuilder
                 return this;
         }
 
-        public EDFAnnotationFileHeaderBuilder minInUnits(Double[] minInUnits)
+        public EDFAnnotationFileHeaderBuilder minInUnits(double[] minInUnits)
         {
                 this.minInUnits = minInUnits;
                 return this;
         }
 
-        public EDFAnnotationFileHeaderBuilder maxInUnits(Double[] maxInUnits)
+        public EDFAnnotationFileHeaderBuilder maxInUnits(double[] maxInUnits)
         {
                 this.maxInUnits = maxInUnits;
                 return this;
         }
 
-        public EDFAnnotationFileHeaderBuilder digitalMin(Integer[] digitalMin)
+        public EDFAnnotationFileHeaderBuilder digitalMin(int[] digitalMin)
         {
                 this.digitalMin = digitalMin;
                 return this;
         }
 
-        public EDFAnnotationFileHeaderBuilder digitalMax(Integer[] digitalMax)
+        public EDFAnnotationFileHeaderBuilder digitalMax(int[] digitalMax)
         {
                 this.digitalMax = digitalMax;
                 return this;
@@ -194,7 +194,7 @@ public class EDFAnnotationFileHeaderBuilder
                 return this;
         }
 
-        public EDFAnnotationFileHeaderBuilder numberOfSamples(Integer[] numberOfSamples)
+        public EDFAnnotationFileHeaderBuilder numberOfSamples(int[] numberOfSamples)
         {
                 this.numberOfSamples = numberOfSamples;
                 return this;
@@ -230,9 +230,9 @@ public class EDFAnnotationFileHeaderBuilder
                 header.startTime = appendSpacesToString(header.startTime, START_TIME_SIZE - header.startTime.length());
 
                 header.formatVersion = createStringWithSpaces("", DATA_FORMAT_VERSION_SIZE);
-                header.numberOfRecords = numberOfRecords != null ? numberOfRecords : 1;
+                header.numberOfRecords = Math.max(0, numberOfRecords);
                 header.durationOfRecords = durationOfRecord;
-                header.numberOfChannels = numberOfChannels != null ? numberOfChannels : 1;
+                header.numberOfChannels = Math.max(0, numberOfChannels);
                 header.bytesInHeader = EDFConstants.HEADER_SIZE_RECORDING_INFO +
                                        header.numberOfChannels * EDFConstants.HEADER_SIZE_PER_CHANNEL;
 
