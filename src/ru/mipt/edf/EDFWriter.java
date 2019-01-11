@@ -75,7 +75,7 @@ public class EDFWriter
                 putIntoBuffer(bb, NUMBER_OF_SAMPLES_SIZE, header.numberOfSamples);
                 putIntoBuffer(bb, header.reserveds);
 
-                outputStream.write(bb.array());
+                outputStream.write(bb.array(), bb.arrayOffset(), bb.position());
         }
 
         /**
